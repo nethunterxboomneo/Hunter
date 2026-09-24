@@ -2,14 +2,54 @@
 <html lang="az">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hunter — Hədəfini tap və irəli get.">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Hunter — Hədəfini tap. İrəli get.</title>
+
+  <meta
+    name="description"
+    content="Hunter — sürətli, minimalist və müasir rəqəmsal platforma. İdeyalar burada başlanır və layihələr böyüyür."
+  >
+
+  <meta
+    name="keywords"
+    content="Hunter, Hunter Azerbaijan, Hunter website, Hədəfini tap, rəqəmsal platforma"
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <link
+    rel="canonical"
+    href="https://nethunterxboomneo.github.io/Hunter/"
+  >
+
+  <!-- Social Media / Google Preview -->
+  <meta
+    property="og:title"
+    content="Hunter — Hədəfini tap. İrəli get."
+  >
+
+  <meta
+    property="og:description"
+    content="Hunter — sürətli, minimalist və müasir rəqəmsal platforma."
+  >
+
+  <meta
+    property="og:url"
+    content="https://nethunterxboomneo.github.io/Hunter/"
+  >
+
+  <meta property="og:type" content="website">
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
@@ -17,543 +57,743 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #070707;
-      color: #fff;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      background: #050505;
+      color: #ffffff;
       line-height: 1.6;
       overflow-x: hidden;
     }
 
-    ::selection {
-      background: #fff;
-      color: #000;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
+
+    /* Background */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(255,255,255,0.06),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 80% 70%,
+          rgba(255,255,255,0.04),
+          transparent 30%
+        );
+      z-index: -1;
+    }
+
+    /* Header */
 
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      padding: 20px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(7, 7, 7, .72);
+      z-index: 1000;
+
       backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,.05);
-      z-index: 20;
+      -webkit-backdrop-filter: blur(16px);
+
+      background: rgba(5,5,5,0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+
+      height: 72px;
+      padding: 0 24px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .logo {
-      color: #fff;
-      text-decoration: none;
-      font-size: 24px;
-      font-weight: 900;
-      letter-spacing: 4px;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 3px;
     }
 
-    nav {
+    .nav-links {
       display: flex;
-      gap: 28px;
+      align-items: center;
+      gap: 32px;
     }
 
-    nav a {
-      color: #888;
-      text-decoration: none;
+    .nav-links a {
       font-size: 14px;
-      transition: .25s;
+      color: #b8b8b8;
+      transition: 0.3s ease;
     }
 
-    nav a:hover {
-      color: #fff;
+    .nav-links a:hover {
+      color: #ffffff;
     }
 
-    .menu {
+    /* Mobile menu */
+
+    .menu-btn {
       display: none;
       background: none;
-      border: 0;
-      color: #fff;
-      font-size: 24px;
+      border: none;
+      color: white;
+      font-size: 26px;
       cursor: pointer;
     }
 
+    /* Hero */
+
     .hero {
       min-height: 100vh;
+
+      max-width: 1200px;
+      margin: auto;
+
+      padding:
+        150px 24px
+        100px;
+
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 140px 7% 90px;
-      position: relative;
-      overflow: hidden;
+      align-items: center;
     }
 
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-      pointer-events: none;
+    .hero-content {
+      max-width: 850px;
     }
 
-    .hero::before {
-      width: 520px;
-      height: 520px;
-      background: #333;
-      opacity: .25;
-      right: -180px;
-      top: 80px;
-      animation: float 7s ease-in-out infinite;
+    .badge {
+      display: inline-block;
+
+      padding: 7px 14px;
+      margin-bottom: 24px;
+
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 999px;
+
+      color: #bdbdbd;
+      font-size: 13px;
+
+      background: rgba(255,255,255,0.04);
     }
 
-    .hero::after {
-      width: 280px;
-      height: 280px;
-      background: #222;
-      opacity: .25;
-      left: -130px;
-      bottom: 0;
+    .hero h1 {
+      font-size: clamp(52px, 9vw, 110px);
+      line-height: 0.95;
+      letter-spacing: -5px;
+
+      margin-bottom: 32px;
     }
 
-    .hero > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    .tag {
+    .hero h1 span {
       color: #777;
-      letter-spacing: 4px;
-      font-size: 12px;
-      margin-bottom: 20px;
     }
 
-    h1 {
-      font-size: clamp(58px, 12vw, 150px);
-      line-height: .88;
-      letter-spacing: -7px;
-      max-width: 1000px;
-      animation: rise .8s ease both;
-    }
+    .hero p {
+      max-width: 650px;
 
-    h1 span {
-      color: #666;
-    }
+      font-size: 19px;
+      color: #a6a6a6;
 
-    .description {
-      max-width: 570px;
-      color: #999;
-      margin: 38px 0;
-      font-size: 18px;
-      animation: rise .8s .12s ease both;
+      margin-bottom: 40px;
     }
 
     .buttons {
       display: flex;
       gap: 14px;
-      animation: rise .8s .24s ease both;
+      flex-wrap: wrap;
     }
 
-    .button {
-      display: inline-block;
-      padding: 14px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: .25s;
-      cursor: pointer;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 14px 24px;
+
+      border-radius: 12px;
+
+      font-size: 15px;
+      font-weight: 600;
+
+      transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border 0.3s ease;
     }
 
-    .primary {
-      background: #fff;
-      color: #000;
+    .btn:hover {
+      transform: translateY(-3px);
     }
 
-    .primary:hover {
-      transform: translateY(-3px) scale(1.02);
+    .btn-primary {
+      background: #ffffff;
+      color: #000000;
     }
 
-    .secondary {
-      border: 1px solid #333;
-      color: #fff;
+    .btn-primary:hover {
+      background: #dddddd;
     }
 
-    .secondary:hover {
-      background: #fff;
-      color: #000;
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #ffffff;
     }
 
-    section:not(.hero) {
-      padding: 120px 7%;
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.06);
     }
 
-    .section-label {
-      margin-bottom: 35px;
+    /* Sections */
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 110px 24px;
     }
+
+    .section-title {
+      font-size: clamp(36px, 6vw, 64px);
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+    .section-description {
+      max-width: 650px;
+      color: #929292;
+      font-size: 17px;
+      margin-bottom: 55px;
+    }
+
+    /* Features */
 
     .features {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 20px;
     }
 
     .card {
-      border: 1px solid #202020;
-      padding: 36px;
-      border-radius: 22px;
-      background: linear-gradient(145deg, #0e0e0e, #0a0a0a);
-      transition: .3s;
-      opacity: 0;
-      transform: translateY(25px);
-    }
+      padding: 32px;
 
-    .card.visible {
-      opacity: 1;
-      transform: translateY(0);
+      min-height: 240px;
+
+      border-radius: 20px;
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.07),
+          rgba(255,255,255,0.02)
+        );
+
+      transition:
+        transform 0.3s ease,
+        border 0.3s ease;
     }
 
     .card:hover {
       transform: translateY(-8px);
-      border-color: #444;
+      border-color: rgba(255,255,255,0.2);
     }
 
     .card-number {
-      color: #555;
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 35px;
+    }
+
+    .card h3 {
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #8f8f8f;
+      font-size: 15px;
+    }
+
+    /* About */
+
+    .about-box {
+      padding: 55px;
+
+      border-radius: 24px;
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(255,255,255,0.08),
+          transparent 35%
+        ),
+        rgba(255,255,255,0.025);
+    }
+
+    .about-box h3 {
+      font-size: clamp(30px, 5vw, 55px);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .about-box p {
+      color: #999;
+      max-width: 700px;
+      font-size: 17px;
+    }
+
+    /* Contact */
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact .section-description {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+
+      padding: 35px 24px;
+
+      text-align: center;
+
+      color: #666;
       font-size: 13px;
     }
 
-    .card h2 {
-      margin: 35px 0 10px;
-      font-size: 28px;
+    /* Reveal animation */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
     }
 
-    .card p,
-    .about p {
-      color: #888;
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .about {
-      max-width: 900px;
-    }
+    /* Mobile */
 
-    .about h2 {
-      font-size: clamp(40px, 7vw, 80px);
-      line-height: 1;
-      margin: 15px 0 25px;
-      letter-spacing: -3px;
-    }
+    @media (max-width: 768px) {
 
-    .about p {
-      font-size: 18px;
-      max-width: 720px;
-    }
-
-    .contact {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 30px;
-      border-top: 1px solid #202020;
-    }
-
-    .contact h2 {
-      font-size: clamp(35px, 6vw, 70px);
-      line-height: 1;
-      letter-spacing: -3px;
-    }
-
-    footer {
-      padding: 30px 7%;
-      color: #555;
-      border-top: 1px solid #181818;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .top {
-      color: #777;
-      text-decoration: none;
-    }
-
-    .top:hover {
-      color: #fff;
-    }
-
-    @keyframes rise {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
+      .nav {
+        height: 64px;
       }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translate(0, 0);
-      }
-
-      50% {
-        transform: translate(-30px, 25px);
-      }
-    }
-
-    @media (max-width: 700px) {
-      header {
-        padding: 18px 6%;
-      }
-
-      nav {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        padding: 20px 6%;
-        background: #090909;
-        border-bottom: 1px solid #222;
-        flex-direction: column;
-        gap: 18px;
-      }
-
-      nav.open {
-        display: flex;
-      }
-
-      .menu {
+      .menu-btn {
         display: block;
       }
 
+      .nav-links {
+        position: absolute;
+
+        top: 64px;
+        left: 0;
+
+        width: 100%;
+
+        padding: 20px 24px;
+
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+
+        background: rgba(5,5,5,0.96);
+
+        border-bottom:
+          1px solid rgba(255,255,255,0.08);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
       .hero {
-        padding: 125px 6% 80px;
+        padding-top: 130px;
+        min-height: 90vh;
       }
 
-      h1 {
-        letter-spacing: -4px;
+      .hero h1 {
+        letter-spacing: -3px;
       }
 
-      .description {
-        font-size: 16px;
-      }
-
-      .buttons {
-        flex-wrap: wrap;
-      }
-
-      section:not(.hero) {
-        padding: 90px 6%;
+      .hero p {
+        font-size: 17px;
       }
 
       .features {
         grid-template-columns: 1fr;
       }
 
-      .contact {
-        flex-direction: column;
-        align-items: flex-start;
+      .about-box {
+        padding: 32px;
       }
 
-      footer {
-        padding: 25px 6%;
+      section {
+        padding:
+          80px 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .hero h1 {
+        font-size: 54px;
+      }
+
+      .buttons {
         flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
       }
     }
   </style>
-  <!-- Google / SEO -->
-<title>Hunter — Hədəfini tap. İrəli get.</title>
-
-<meta
-  name="description"
-  content="Hunter — sürətli, minimalist və müasir rəqəmsal platforma. İdeyalar burada başlanır və layihələr böyüyür."
->
-
-<meta
-  name="keywords"
-  content="Hunter, Hunter Azerbaijan, Hunter website, Hədəfini tap, rəqəmsal platforma"
->
-
-<meta name="robots" content="index, follow">
-
-<link
-  rel="canonical"
-  href="https://nethunterxboomneo.github.io/Hunter/"
->
-
-<!-- Google / Social preview -->
-<meta property="og:title" content="Hunter — Hədəfini tap. İrəli get.">
-<meta
-  property="og:description"
-  content="Hunter — sürətli, minimalist və müasir rəqəmsal platforma."
->
-<meta
-  property="og:url"
-  content="https://nethunterxboomneo.github.io/Hunter/"
->
-<meta property="og:type" content="website">
 </head>
 
 <body>
 
+  <!-- Header -->
+
   <header>
-    <a href="#" class="logo">HUNTER</a>
+    <nav class="nav">
 
-    <button class="menu" id="menu" aria-label="Menyunu aç">
-      ☰
-    </button>
+      <a href="#home" class="logo">
+        HUNTER
+      </a>
 
-    <nav id="nav">
-      <a href="#features">Xüsusiyyətlər</a>
-      <a href="#about">Haqqında</a>
-      <a href="#contact">Əlaqə</a>
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Menyunu aç"
+      >
+        ☰
+      </button>
+
+      <div class="nav-links" id="navLinks">
+
+        <a href="#features">
+          Xüsusiyyətlər
+        </a>
+
+        <a href="#about">
+          Haqqında
+        </a>
+
+        <a href="#contact">
+          Əlaqə
+        </a>
+
+      </div>
+
     </nav>
   </header>
 
-  <main>
+
+  <!-- Hero -->
+
+  <main id="home">
 
     <section class="hero">
-      <div class="tag">HUNTER / 2026</div>
 
-      <h1>
-        Hədəfini tap.<br>
-        <span>İrəli get.</span>
-      </h1>
+      <div class="hero-content reveal">
 
-      <p class="description">
-        Hunter — sürətli, minimalist və müasir rəqəmsal platforma.
-        Burada ideyalar başlanır və layihələr böyüyür.
-      </p>
+        <div class="badge">
+          Yeni nəsil rəqəmsal platforma
+        </div>
 
-      <div class="buttons">
-        <a href="#features" class="button primary">
-          Kəşf et →
-        </a>
+        <h1>
+          Hədəfini tap.
+          <br>
+          <span>İrəli get.</span>
+        </h1>
 
-        <a href="#about" class="button secondary">
-          Haqqında
-        </a>
+        <p>
+          Hunter — sürətli, minimalist və müasir
+          rəqəmsal platforma. Burada ideyalar
+          başlanır və layihələr böyüyür.
+        </p>
+
+        <div class="buttons">
+
+          <a
+            href="#features"
+            class="btn btn-primary"
+          >
+            Kəşf et →
+          </a>
+
+          <a
+            href="#about"
+            class="btn btn-secondary"
+          >
+            Haqqında
+          </a>
+
+        </div>
+
       </div>
+
     </section>
+
+
+    <!-- Features -->
 
     <section id="features">
 
-      <div class="tag section-label">
-        NƏ TƏKLİF EDİRİK?
+      <div class="reveal">
+
+        <h2 class="section-title">
+          Nə təklif edirik?
+        </h2>
+
+        <p class="section-description">
+          Sadə, sürətli və istifadəsi rahat
+          rəqəmsal təcrübə üçün hazırlanmış
+          minimalist sistem.
+        </p>
+
       </div>
+
 
       <div class="features">
 
-        <div class="card reveal">
-          <span class="card-number">01</span>
-          <h2>Sürətli</h2>
-          <p>
-            Yüngül və optimallaşdırılmış quruluş.
-            Sürətli yüklənmə üçün hazırlanıb.
-          </p>
-        </div>
+        <article class="card reveal">
 
-        <div class="card reveal">
-          <span class="card-number">02</span>
-          <h2>Modern</h2>
-          <p>
-            Təmiz, minimalist və müasir istifadəçi interfeysi
-            ilə diqqəti əsas məzmuna yönəldir.
-          </p>
-        </div>
+          <div class="card-number">
+            01
+          </div>
 
-        <div class="card reveal">
-          <span class="card-number">03</span>
-          <h2>Responsive</h2>
+          <h3>
+            Sürətli
+          </h3>
+
           <p>
-            Telefon, planşet və kompüter ekranlarında
-            uyğun və rahat görünür.
+            Yüngül və optimallaşdırılmış
+            struktur sayəsində sürətli
+            istifadə təcrübəsi.
           </p>
-        </div>
+
+        </article>
+
+
+        <article class="card reveal">
+
+          <div class="card-number">
+            02
+          </div>
+
+          <h3>
+            Modern
+          </h3>
+
+          <p>
+            Minimalist dizayn, müasir
+            interfeys və təmiz vizual
+            görünüş.
+          </p>
+
+        </article>
+
+
+        <article class="card reveal">
+
+          <div class="card-number">
+            03
+          </div>
+
+          <h3>
+            Responsive
+          </h3>
+
+          <p>
+            Telefon, planşet və kompüter
+            ekranlarında uyğun və rahat
+            görünüş.
+          </p>
+
+        </article>
 
       </div>
+
     </section>
 
-    <section id="about" class="about">
 
-      <div class="tag">
-        ABOUT HUNTER
+    <!-- About -->
+
+    <section id="about">
+
+      <div class="about-box reveal">
+
+        <h3>
+          Sadəlikdən
+          <br>
+          güc yaranır.
+        </h3>
+
+        <p>
+          Hunter-in məqsədi mürəkkəbliyi
+          azaltmaq və istifadəçiyə lazım olan
+          təcrübəni mümkün qədər sadə formada
+          təqdim etməkdir.
+        </p>
+
       </div>
 
-      <h2>
-        Sadəlikdən güc yaranır.
-      </h2>
-
-      <p>
-        Hunter layihəsi üçün hazırlanmış ilkin veb platformadır.
-        Bu struktur gələcəkdə portfolio, məhsul, xidmət və ya
-        tam funksional web tətbiqinə çevrilə bilər.
-      </p>
-
     </section>
 
-    <section id="contact" class="contact">
 
-      <div>
-        <div class="tag">
-          CONTACT
-        </div>
+    <!-- Contact -->
 
-        <h2>
-          Bir layihə<br>
-          başladaq.
+    <section
+      id="contact"
+      class="contact"
+    >
+
+      <div class="reveal">
+
+        <h2 class="section-title">
+          Bir layihə başladaq.
         </h2>
-      </div>
 
-      <a href="mailto:hello@hunter.example" class="button primary">
-        Əlaqə saxla →
-      </a>
+        <p class="section-description">
+          Fikrin, layihən və ya əməkdaşlıq
+          təklifin varsa, bizimlə əlaqə saxla.
+        </p>
+
+        <a
+          href="mailto:hello@hunter.example"
+          class="btn btn-primary"
+        >
+          Əlaqə saxla →
+        </a>
+
+      </div>
 
     </section>
 
   </main>
 
-  <footer>
-    <span>
-      © 2026 Hunter. Bütün hüquqlar qorunur.
-    </span>
 
-    <a href="#" class="top">
-      Yuxarı ↑
-    </a>
+  <!-- Footer -->
+
+  <footer>
+    © 2026 Hunter. Bütün hüquqlar qorunur.
   </footer>
 
+
+  <!-- JavaScript -->
+
   <script>
-    const menu = document.getElementById("menu");
-    const nav = document.getElementById("nav");
 
-    menu.addEventListener("click", () => {
-      nav.classList.toggle("open");
-    });
+    // Mobile menu
 
-    nav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        nav.classList.remove("open");
-      });
-    });
+    const menuBtn =
+      document.getElementById("menuBtn");
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      {
-        threshold: 0.15
+    const navLinks =
+      document.getElementById("navLinks");
+
+
+    menuBtn.addEventListener(
+      "click",
+      () => {
+
+        navLinks.classList.toggle("active");
+
       }
     );
 
-    document.querySelectorAll(".reveal").forEach((element) => {
-      observer.observe(element);
-    });
+
+    // Close menu after clicking a link
+
+    document
+      .querySelectorAll(".nav-links a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            navLinks.classList.remove("active");
+
+          }
+        );
+
+      });
+
+
+    // Scroll reveal animation
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach(element => {
+
+        observer.observe(element);
+
+      });
+
   </script>
 
 </body>
