@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hunter</title>
+  <meta name="description" content="Hunter — Hədəfini tap və irəli get.">
+  <title>Hunter — Hədəfini tap</title>
 
   <style>
     * {
@@ -18,45 +19,63 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: #080808;
+      background: #070707;
       color: #fff;
       line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: #fff;
+      color: #000;
     }
 
     header {
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
       padding: 20px 7%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(8, 8, 8, 0.85);
-      backdrop-filter: blur(12px);
-      z-index: 10;
+      background: rgba(7, 7, 7, .72);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      z-index: 20;
     }
 
     .logo {
       color: #fff;
       text-decoration: none;
       font-size: 24px;
-      font-weight: 800;
-      letter-spacing: 3px;
+      font-weight: 900;
+      letter-spacing: 4px;
     }
 
     nav {
       display: flex;
-      gap: 25px;
+      gap: 28px;
     }
 
     nav a {
-      color: #aaa;
+      color: #888;
       text-decoration: none;
-      transition: 0.3s;
+      font-size: 14px;
+      transition: .25s;
     }
 
     nav a:hover {
       color: #fff;
+    }
+
+    .menu {
+      display: none;
+      background: none;
+      border: 0;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
     }
 
     .hero {
@@ -64,51 +83,75 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 120px 7% 80px;
+      padding: 140px 7% 90px;
       position: relative;
       overflow: hidden;
     }
 
-    .hero::before {
+    .hero::before,
+    .hero::after {
       content: "";
       position: absolute;
-      width: 500px;
-      height: 500px;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 520px;
+      height: 520px;
       background: #333;
-      filter: blur(150px);
-      opacity: 0.25;
-      right: -150px;
-      top: 100px;
+      opacity: .25;
+      right: -180px;
+      top: 80px;
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .hero::after {
+      width: 280px;
+      height: 280px;
+      background: #222;
+      opacity: .25;
+      left: -130px;
+      bottom: 0;
+    }
+
+    .hero > * {
+      position: relative;
+      z-index: 1;
     }
 
     .tag {
-      color: #888;
+      color: #777;
       letter-spacing: 4px;
-      font-size: 13px;
+      font-size: 12px;
       margin-bottom: 20px;
     }
 
     h1 {
-      font-size: clamp(60px, 12vw, 150px);
-      line-height: 0.9;
-      letter-spacing: -6px;
-      max-width: 900px;
+      font-size: clamp(58px, 12vw, 150px);
+      line-height: .88;
+      letter-spacing: -7px;
+      max-width: 1000px;
+      animation: rise .8s ease both;
     }
 
     h1 span {
-      color: #777;
+      color: #666;
     }
 
     .description {
-      max-width: 550px;
+      max-width: 570px;
       color: #999;
-      margin: 35px 0;
+      margin: 38px 0;
       font-size: 18px;
+      animation: rise .8s .12s ease both;
     }
 
     .buttons {
       display: flex;
-      gap: 15px;
+      gap: 14px;
+      animation: rise .8s .24s ease both;
     }
 
     .button {
@@ -117,7 +160,8 @@
       border-radius: 30px;
       text-decoration: none;
       font-weight: bold;
-      transition: 0.3s;
+      transition: .25s;
+      cursor: pointer;
     }
 
     .primary {
@@ -126,11 +170,11 @@
     }
 
     .primary:hover {
-      transform: translateY(-3px);
+      transform: translateY(-3px) scale(1.02);
     }
 
     .secondary {
-      border: 1px solid #444;
+      border: 1px solid #333;
       color: #fff;
     }
 
@@ -143,22 +187,39 @@
       padding: 120px 7%;
     }
 
+    .section-label {
+      margin-bottom: 35px;
+    }
+
     .features {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 18px;
     }
 
     .card {
-      border: 1px solid #222;
-      padding: 35px;
-      border-radius: 20px;
-      background: #0d0d0d;
+      border: 1px solid #202020;
+      padding: 36px;
+      border-radius: 22px;
+      background: linear-gradient(145deg, #0e0e0e, #0a0a0a);
+      transition: .3s;
+      opacity: 0;
+      transform: translateY(25px);
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: #444;
     }
 
     .card-number {
-      color: #666;
-      font-size: 14px;
+      color: #555;
+      font-size: 13px;
     }
 
     .card h2 {
@@ -177,7 +238,14 @@
 
     .about h2 {
       font-size: clamp(40px, 7vw, 80px);
+      line-height: 1;
       margin: 15px 0 25px;
+      letter-spacing: -3px;
+    }
+
+    .about p {
+      font-size: 18px;
+      max-width: 720px;
     }
 
     .contact {
@@ -185,26 +253,99 @@
       justify-content: space-between;
       align-items: center;
       gap: 30px;
-      border-top: 1px solid #222;
+      border-top: 1px solid #202020;
     }
 
     .contact h2 {
       font-size: clamp(35px, 6vw, 70px);
+      line-height: 1;
+      letter-spacing: -3px;
     }
 
     footer {
       padding: 30px 7%;
       color: #555;
       border-top: 1px solid #181818;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .top {
+      color: #777;
+      text-decoration: none;
+    }
+
+    .top:hover {
+      color: #fff;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0);
+      }
+
+      50% {
+        transform: translate(-30px, 25px);
+      }
     }
 
     @media (max-width: 700px) {
+      header {
+        padding: 18px 6%;
+      }
+
       nav {
         display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 20px 6%;
+        background: #090909;
+        border-bottom: 1px solid #222;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      .hero {
+        padding: 125px 6% 80px;
       }
 
       h1 {
-        letter-spacing: -3px;
+        letter-spacing: -4px;
+      }
+
+      .description {
+        font-size: 16px;
+      }
+
+      .buttons {
+        flex-wrap: wrap;
+      }
+
+      section:not(.hero) {
+        padding: 90px 6%;
       }
 
       .features {
@@ -215,6 +356,11 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
+      footer {
+        padding: 25px 6%;
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -224,7 +370,11 @@
   <header>
     <a href="#" class="logo">HUNTER</a>
 
-    <nav>
+    <button class="menu" id="menu" aria-label="Menyunu aç">
+      ☰
+    </button>
+
+    <nav id="nav">
       <a href="#features">Xüsusiyyətlər</a>
       <a href="#about">Haqqında</a>
       <a href="#contact">Əlaqə</a>
@@ -247,16 +397,25 @@
       </p>
 
       <div class="buttons">
-        <a href="#features" class="button primary">Kəşf et →</a>
-        <a href="#about" class="button secondary">Haqqında</a>
+        <a href="#features" class="button primary">
+          Kəşf et →
+        </a>
+
+        <a href="#about" class="button secondary">
+          Haqqında
+        </a>
       </div>
     </section>
 
     <section id="features">
 
+      <div class="tag section-label">
+        NƏ TƏKLİF EDİRİK?
+      </div>
+
       <div class="features">
 
-        <div class="card">
+        <div class="card reveal">
           <span class="card-number">01</span>
           <h2>Sürətli</h2>
           <p>
@@ -265,31 +424,36 @@
           </p>
         </div>
 
-        <div class="card">
+        <div class="card reveal">
           <span class="card-number">02</span>
           <h2>Modern</h2>
           <p>
-            Təmiz, minimalist və müasir istifadəçi interfeysi.
+            Təmiz, minimalist və müasir istifadəçi interfeysi
+            ilə diqqəti əsas məzmuna yönəldir.
           </p>
         </div>
 
-        <div class="card">
+        <div class="card reveal">
           <span class="card-number">03</span>
           <h2>Responsive</h2>
           <p>
-            Telefon, planşet və kompüterlərdə düzgün işləyir.
+            Telefon, planşet və kompüter ekranlarında
+            uyğun və rahat görünür.
           </p>
         </div>
 
       </div>
-
     </section>
 
     <section id="about" class="about">
 
-      <div class="tag">ABOUT HUNTER</div>
+      <div class="tag">
+        ABOUT HUNTER
+      </div>
 
-      <h2>Sadəlikdən güc yaranır.</h2>
+      <h2>
+        Sadəlikdən güc yaranır.
+      </h2>
 
       <p>
         Hunter layihəsi üçün hazırlanmış ilkin veb platformadır.
@@ -302,8 +466,14 @@
     <section id="contact" class="contact">
 
       <div>
-        <div class="tag">CONTACT</div>
-        <h2>Bir layihə başladaq.</h2>
+        <div class="tag">
+          CONTACT
+        </div>
+
+        <h2>
+          Bir layihə<br>
+          başladaq.
+        </h2>
       </div>
 
       <a href="mailto:hello@hunter.example" class="button primary">
@@ -315,8 +485,46 @@
   </main>
 
   <footer>
-    © 2026 Hunter. Bütün hüquqlar qorunur.
+    <span>
+      © 2026 Hunter. Bütün hüquqlar qorunur.
+    </span>
+
+    <a href="#" class="top">
+      Yuxarı ↑
+    </a>
   </footer>
+
+  <script>
+    const menu = document.getElementById("menu");
+    const nav = document.getElementById("nav");
+
+    menu.addEventListener("click", () => {
+      nav.classList.toggle("open");
+    });
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+      });
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      {
+        threshold: 0.15
+      }
+    );
+
+    document.querySelectorAll(".reveal").forEach((element) => {
+      observer.observe(element);
+    });
+  </script>
 
 </body>
 </html>
